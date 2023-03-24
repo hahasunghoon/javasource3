@@ -140,3 +140,5 @@ public class DeptDao {
 		return list;
 	}
 }
+SELECT * FROM DEPT_TEMP;
+SELECT * FROM EMP_TEMP;

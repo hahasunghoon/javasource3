@@ -29,7 +29,7 @@ public class Myshop<print> implements IShop {
 
 		@Override
 		public void genUser() {		
-			//User 2명 생성 후 배열에 저장
+			//User 2명 생성 후 배열에 저장		
 			users.add(new User("홍길동", PayType.CARD));
 			users.add(new User("성춘향", PayType.CASH));
 			System.out.println();
@@ -48,6 +48,12 @@ public class Myshop<print> implements IShop {
 		public void start() {
 			System.out.println(title + " : 메인화면 - 계정 선택");
 			System.out.println("===========================================");	
+			
+			
+//			for (int i = 0; i < users.size(); i++) {
+//				User user = users.get(i);
+//				System.out.printf("[%d] %s(%s)\n",i,user.getName(),user.getPayType());
+//			}		
 			
 			int i = 0;
 			for (User user : users) {
@@ -98,14 +104,7 @@ public class Myshop<print> implements IShop {
 			// h => start 메소드 호출, c => checkOut() 호출
 			switch (sel) {
 			case "0":case "1":case "2":case "3":			
-				for(Product cart : carts) {
-					if(cart == null) {
-						// Integer.parseInt("0") ==> 0
-						carts.add(products.get(Integer.parseInt(sel)));
-						break;
-					}				
-				}		
-				
+				carts.add(products.get(Integer.parseInt(sel)));			
 				productList();
 				break;
 			case "h": case "H":
@@ -158,5 +157,5 @@ public class Myshop<print> implements IShop {
 				break;
 			}
 		}
-		
-}
+	}
+

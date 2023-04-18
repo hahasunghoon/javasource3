@@ -1,8 +1,5 @@
 package ch7;
 
-import javax.management.RuntimeErrorException;
-import javax.swing.text.BadLocationException;
-
 public class Account {
 	//속성 
 	String accountNo; //계좌번호(110-10-10000) accountNo

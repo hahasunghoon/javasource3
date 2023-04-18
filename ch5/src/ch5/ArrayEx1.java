@@ -54,7 +54,7 @@ public class ArrayEx1 {
 	    
 	    // java.lang.ArrayIndexOutOfBoundsException 이오류는
 	    // "abc",efg",(0,1) 인데 strArr[2]는 3이므로 범위에 벗어난것
-	    System.out.println(strArr[2]);
+	    System.out.println(strArr[2] );
 		
 
 	}

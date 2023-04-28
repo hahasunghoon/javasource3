@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/include/header.jsp" %>
+<%--<form method = "get">
+    전송하고 싶은 데이터 : 로그인,게시판,회원가입,상품등록...
+    </form>
+    
+    method : get or post
+             데이터의 값을 감추고 싶은 경우 post
+             
+             주소줄 이용 get(많은 데이터를 보낼수없고, 데이터가 노출됨) ==> 검색기능
+
+ --%>
 <h1>회원 추가</h1>
 <form action="insertPro.jsp" method="post">
   <div class="mb-3">

@@ -1,13 +1,19 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.naming.factory.TransactionFactory;
+
 import action.Action;
+import action.ActionFactory;
+import action.ActionForward;
 import action.DeleteAction;
 import action.InsertAction;
 
@@ -34,16 +40,13 @@ public class PatternController extends HttpServlet {
 		System.out.println("contextPath " + contextPath);
 		System.out.println("cmd "+cmd);
 		
+		ActionFactory actionFactory = ActionFactory.getInstance();
+		
 		Action action = null;
 		
-		//어디서 요청이 왔는지
+		//어디서 요청이 왔는지에 따라 액션 생성
 		if(cmd.equals("/insert.do")) {
 			action = new InsertAction();
-			try {
-				 action.execute(request);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 			
 		}else if(cmd.equals("/list.do")) {
 			
@@ -51,14 +54,22 @@ public class PatternController extends HttpServlet {
 			
 		}else if(cmd.equals("/delete.do")) {
 			 action = new DeleteAction();
-			try {
-				action.execute(request);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
 		}
+		
+		//생성된 액션에 일 시키기(메소드 호출)
+		ActionForward af = null;
+			try {
+			        af	= action.execute(request);
+			} catch (Exception e) {
+				e.printStackTrace();		
+		}
+			//
+			if(af.isRedirect()) {
+				response.sendRedirect(af.getPath());
+			}else {
+				RequestDispatcher rd = request.getRequestDispatcher(af.getPath());
+				rd.forward(request, response);
+			}
 	}
 
 	/**

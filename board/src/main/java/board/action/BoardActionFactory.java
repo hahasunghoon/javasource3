@@ -1,4 +1,5 @@
 package board.action;
+
 public class BoardActionFactory {
 	
 	private static BoardActionFactory baf;	
@@ -18,12 +19,26 @@ public class BoardActionFactory {
 			action = new BoardWriteAction();
 		}else if(cmd.equals("/list.do")) {
 			action = new BoardListAction();
+		}else if(cmd.equals("/read.do")) {
+			action = new BoardReadAction();
+		}else if(cmd.equals("/cntUpdate.do")) {
+			action = new BoardCntAction();
+		}else if(cmd.equals("/modify.do")) {
+			action = new BoardModifyAction();
+		}else if(cmd.equals("/delete.do")) {
+			action = new BoardDeleteAction();
+		}else if(cmd.equals("/replyView.do")) {
+			action = new  BoardReplyViewAction();
+		}else if(cmd.equals("/reply.do")) {
+			action = new  BoardReplyViewAction();
 		}
 		
 		
 		return action;
 	}
 }
+
+
 
 
 

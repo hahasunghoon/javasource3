@@ -25,13 +25,19 @@ public class BoardActionFactory {
 			action = new BoardCntAction();
 		}else if(cmd.equals("/modify.do")) {
 			action = new BoardModifyAction();
+		}else if(cmd.equals("/update.do")) {
+			action = new BoardUpdateAction();
 		}else if(cmd.equals("/delete.do")) {
 			action = new BoardDeleteAction();
 		}else if(cmd.equals("/replyView.do")) {
-			action = new  BoardReplyViewAction();
+			action = new BoardReplyViewAction();
 		}else if(cmd.equals("/reply.do")) {
-			action = new  BoardReplyViewAction();
+			action = new BoardReplyAction();
 		}
+		
+//		else if(cmd.equals("/search.do")) {
+//			action = new BoardSearchAction();
+//		}
 		
 		
 		return action;
